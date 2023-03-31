@@ -1,6 +1,6 @@
 Name:		texlive-libertinus-type1
 Version:	64958
-Release:	1
+Release:	2
 Summary:	Support for using Libertinus fonts with LaTeX/pdfLaTeX
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/libertinus-type1
