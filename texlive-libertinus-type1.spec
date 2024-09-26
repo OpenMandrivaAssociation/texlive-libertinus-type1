@@ -1,5 +1,5 @@
 Name:		texlive-libertinus-type1
-Version:	67450
+Version:	72354
 Release:	1
 Summary:	Support for using Libertinus fonts with LaTeX/pdfLaTeX
 Group:		Publishing
