@@ -1,42 +1,21 @@
-Name:		texlive-libertinus-type1
-Version:	72354
+%global tl_name libertinus-type1
+%global tl_revision 76891
+
+Name:		texlive-%{tl_name}
+Version:	%{tl_revision}
 Release:	1
 Summary:	Support for using Libertinus fonts with LaTeX/pdfLaTeX
 Group:		Publishing
-URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/libertinus-type1
+URL:		https://www.ctan.org/tex-archive/fonts/libertinus-type1
 License:	gpl2 ofl lppl
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/libertinus-type1.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/libertinus-type1.doc.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/libertinus-type1.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/libertinus-type1.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
 This package provides support for use of Libertinus fonts with
-traditional processing engines (LaTeX with dvips or dvipdfmx,
-or pdfLaTeX).
+traditional processing engines (LaTeX with dvips or dvipdfmx, or
+pdfLaTeX).
 
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%{_texmfdistdir}/tex/latex/libertinus-type1
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1
-%{_texmfdistdir}/fonts/type1/public/libertinus-type1
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1
-%{_texmfdistdir}/fonts/map/dvips/libertinus-type1
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1
-%doc %{_texmfdistdir}/doc/fonts/libertinus-type1
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
