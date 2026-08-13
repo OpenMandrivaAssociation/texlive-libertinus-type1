@@ -12,10 +12,18 @@ Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/libertinus-type1
 Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/libertinus-type1.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
 BuildSystem:	texlive
-Provides:	texlive(%{tl_name}) = %{tl_revision}
+Requires:	texlive-tlpkg
+Provides:	texlive(%{tl_name}) = %{version}
 
 %description
 This package provides support for use of Libertinus fonts with
 traditional processing engines (LaTeX with dvips or dvipdfmx, or
 pdfLaTeX).
 
+
+%install -a
+mkdir -p %{buildroot}%{_texmf_updmap_d}
+cat > %{buildroot}%{_texmf_updmap_d}/%{tl_name} <<'TL_DROPIN_EOF'
+# from libertinus-type1:
+Map libertinus.map
+TL_DROPIN_EOF
